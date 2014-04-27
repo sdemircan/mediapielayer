@@ -1,0 +1,12 @@
+.thumbnail {
+    border: 0 none;
+}
+
+body {
+    margin-top: 75px;
+    margin-bottom: 50px;
+}
+
+.movie-name {
+    margin-top: 10px;
+}
