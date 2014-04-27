@@ -10,7 +10,8 @@ class Movie:
         return os.path.join(self.path, self.name)
 
     def pretty_name(self):
-        return self.name[:-4].replace('.', ' ').title()
+        file_name = os.path.splitext(self.name)[0]
+        return file_name.replace('.', ' ').title()
 
 class MovieLister:
     def __init__(self, basedir, extensions):
