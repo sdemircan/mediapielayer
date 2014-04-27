@@ -11,7 +11,11 @@
     {% endif %}
       <div class="col-md-4">
         <div class="thumbnail">
-          <img src="/static/img/no-preview.jpg" alt="...">
+          {% if movie.thumbnail() %}
+          <img src="/img{{ movie.thumbnail() }}" alt="thumbnail">
+          {% else %}
+          <img src="/static/img/no-preview.jpg" alt="no thumbnail">
+          {% endif %}
           <div class="caption">
             <h4 class="movie-name">{{ movie.pretty_name() }}</h4>
           </div>

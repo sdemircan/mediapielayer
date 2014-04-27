@@ -15,7 +15,7 @@ class Movie:
         return file_name.replace('.', ' ').title()
 
     def thumbnail(self):
-        return Thumbnailer.get_thumbnail()
+        return Thumbnailer.get_thumbnail(self)
 
 class MovieLister:
     def __init__(self, basedir, extensions):

@@ -16,7 +16,7 @@ class Thumbnailer:
                                  "-o",
                                  thumbnail_path,
                                  "-s",
-                                 size
+                                 str(size)
                                ])
             return thumbnail_path
         except:
