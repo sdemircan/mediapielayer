@@ -19,7 +19,7 @@ class Thumbnailer:
                                  str(size)
                                ])
             return thumbnail_path
-        except:
+        except subprocess.CalledProcessError:
             return None
 
 
