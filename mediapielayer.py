@@ -5,7 +5,7 @@ app.config.from_pyfile("settings.conf")
 
 @app.route("/")
 def list_movies():
-    pass
+    return render_template("base_template.html")
 
 @app.route("/<movie>")
 def watch_movie(movie):
