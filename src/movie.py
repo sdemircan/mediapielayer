@@ -22,4 +22,4 @@ class MovieLister:
         for root, dirs, files in os.walk(self.basedir):
             for extension in self.extensions:
                 for filename in fnmatch.filter(files, extension):
-                    yield Movie(root, filename)
+                    yield Movie(root.decode("utf8"), filename.decode("utf8"))

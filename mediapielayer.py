@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template
+from src.movie import MovieLister
 
 app = Flask(__name__)
 app.config.from_pyfile("settings.conf")
 
 @app.route("/")
 def list_movies():
-    return render_template("movies.html")
+    lister = MovieLister(app.config['TORRENTROOT'], app.config['EXTENSIONS'])
+    return render_template("movies.html", movies=lister.list())
 
 @app.route("/<movie>")
 def watch_movie(movie):
