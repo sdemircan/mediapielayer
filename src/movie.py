@@ -1,17 +1,21 @@
 import os
 import fnmatch
+from src.thumbnailer import Thumbnailer
 
 class Movie:
     def __init__(self, path, name):
         self.path = path
         self.name = name
 
-    def path(self):
+    def full_path(self):
         return os.path.join(self.path, self.name)
 
     def pretty_name(self):
         file_name = os.path.splitext(self.name)[0]
         return file_name.replace('.', ' ').title()
+
+    def thumbnail(self):
+        return Thumbnailer.get_thumbnail()
 
 class MovieLister:
     def __init__(self, basedir, extensions):
