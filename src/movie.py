@@ -1,5 +1,6 @@
 import os
 import fnmatch
+import mimetypes
 from src.thumbnailer import Thumbnailer
 
 class Movie:
@@ -16,6 +17,9 @@ class Movie:
 
     def thumbnail(self):
         return Thumbnailer.get_thumbnail(self)
+
+    def mime(self):
+        return mimetypes.guess_type(self.full_path())[0]
 
 class MovieLister:
     def __init__(self, basedir, extensions):
