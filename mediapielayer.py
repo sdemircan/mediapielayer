@@ -1,8 +1,11 @@
 from flask import Flask, request, render_template, send_from_directory
 from src.movie import MovieLister
+import logging
 
 app = Flask(__name__)
 app.config.from_pyfile("settings.conf")
+
+#logging.basicConfig(level=logging.DEBUG)
 
 @app.route("/")
 def list_movies():

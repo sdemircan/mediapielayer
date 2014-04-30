@@ -1,5 +1,8 @@
 import os
 import subprocess
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Thumbnailer:
 
@@ -10,7 +13,7 @@ class Thumbnailer:
 
         try:
             if not os.path.exists(thumbnail_path):
-                subprocess.call(["ffmpegthumbnailer",
+                subprocess.check_call(["ffmpegthumbnailer",
                                  "-i",
                                  movie.full_path(),
                                  "-o",
@@ -19,7 +22,13 @@ class Thumbnailer:
                                  str(size)
                                ])
             return thumbnail_path
-        except subprocess.CalledProcessError:
-            return None
-
+        except OSError as e:
+            logger.exception("Error while creating thumbnail for %s.%s\n%s",
+                              "Please check ffmpegthumbnailer installed properly",
+                              file_name, e
+                             )
+        except subprocess.CalledProcessError as e:
+            logger.exception("Error occured while creating \
+                               thumbnail with ffmpegthumbnailer for %s\n%s",e
+                             )
 
