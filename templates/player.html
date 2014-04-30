@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Mediapielayer - {{ movie.pretty_name() }} {% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <h2>{{ movie.pretty_name() }}</h2>
+
+  <video id="movie" class="video-js vjs-default-skin"
+    controls preload="auto" width="1280" height="720"
+    {% if movie.thumbnail() %}
+    poster="/dynamic/{{ movie.thumbnail() }}"
+    {% endif %}
+    data-setup='{"example_option":true}'>
+
+   <source src="/dynamic/{{ movie.video() }}" type='{{ movie.mime() }}' />
+
+  </video>
+
+</div>
+
+<script src="/static/js/video.js"></script>
+{% endblock %}

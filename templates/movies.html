@@ -9,18 +9,20 @@
     {% if loop.index0 % 3 == 0 %}
     <div class="row">
     {% endif %}
-      <div class="col-md-4">
-        <div class="thumbnail">
-          {% if movie.thumbnail() %}
-          <img src="/img{{ movie.thumbnail() }}" alt="thumbnail">
-          {% else %}
-          <img src="/static/img/no-preview.jpg" alt="no thumbnail">
-          {% endif %}
-          <div class="caption">
-            <h4 class="movie-name">{{ movie.pretty_name() }}</h4>
+      <a href="/movie/{{ movie.full_path() }}">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            {% if movie.thumbnail() %}
+            <img src="/dynamic/{{ movie.thumbnail() }}" alt="thumbnail">
+            {% else %}
+            <img src="/static/img/no-preview.jpg" alt="no thumbnail">
+            {% endif %}
+            <div class="caption">
+              <h4 class="movie-name">{{ movie.pretty_name() }}</h4>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     {% if loop.index0 % 3 == 2 %}
     </div>
     {% endif %}
